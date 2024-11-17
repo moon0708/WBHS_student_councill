@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>학생회 홈페이지</title>
+    <link rel="stylesheet" href="css/make.css" />
+    <link href="css/flie/toplogo.png" rel="shortcut icon" type="image/x-icon" />
+  </head>
+  <body>
+    <header class="top-header">
+      <div class="object">
+        <a>10633 최형원 | 진로 탐구</a>
+      </div>
+      <div id="auth-buttons" class="auth-buttons">
+        <a href="login.html">로그인</a>
+        <a href="register.html">회원가입</a>
+      </div>
+
+      <div id="user-info" class="user-id" style="display: none">
+        <span>사용자님: <span id="username-display"></span></span>
+        <button id="logout-button" onclick="logout()">로그아웃</button>
+        <!-- 로그아웃 버튼 추가 -->
+      </div>
+    </header>
+    <header class="nav-header">
+      <div class="logo">
+        <a href="path001.html">
+          <img src="css/flie/wbhs_logo.png" alt="학교 로고" />
+        </a>
+      </div>
+      <div class="pages">
+        <a href="path002.html" class="teacherroom">선생님 교무실</a>
+        <a href="path003.html">학생 자치 관련 자료</a>
+        <a href="path004.html">커뮤니티</a>
+        <a href="path005.html">학생회 건의함</a>
+      </div>
+    </header>
+    <div class="container1">
+      <h1>게시글 작성</h1>
+      <a href="path004.html" class="dolagagi">돌아가기</a>
+      <form id="postForm" enctype="multipart/form-data">
+        <input type="text" name="title" placeholder="제목" required /><br />
+        <textarea name="content" placeholder="내용" required></textarea><br />
+        <input type="file" name="image" /><br />
+        <button type="submit">게시글 작성</button>
+      </form>
+    </div>
+    <script>
+      document
+        .getElementById("postForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const formData = new FormData(e.target);
+
+          // 로컬 스토리지에서 사용자 이름 가져오기
+          const username = localStorage.getItem("username") || "guest";
+          formData.append("username", username);
+
+          try {
+            const response = await fetch("/api/posts", {
+              method: "POST",
+              body: formData,
+            });
+            const result = await response.json();
+
+            if (response.ok) {
+              alert(result.message);
+              window.location.href = "/static/path004.html";
+            } else {
+              alert(`오류: ${result.message}`);
+            }
+          } catch (error) {
+            console.error("Error:", error);
+            alert("서버와의 연결에 문제가 발생했습니다.");
+          }
+        });
+    </script>
+
+    <div class="background-image-container">
+      <img
+        src="css/flie/background.jpg"
+        alt="배경 이미지"
+        class="background-image"
+      />
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

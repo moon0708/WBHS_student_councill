@@ -1,0 +1,322 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.background-image-container {
+  position: fixed; /* 페이지 스크롤과 상관없이 고정 */
+  top: 0;
+  left: 0;
+  opacity: 100%;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* 뒤로 보내기 */
+  overflow: hidden; /* 이미지가 넘치면 숨기기 */
+}
+
+.background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 비율 유지하면서 화면에 맞게 */
+}
+
+header.top-header {
+  background-color: rgba(0, 0, 0, 0.1); /* 배경을 흰색으로 */
+  padding: 5px 20px; /* 세로 폭을 좁게 설정 */
+  display: flex;
+  justify-content: space-between;
+}
+
+header.top-header .auth-buttons {
+  right: 0%;
+  transform: translateX(-187px); /* 중앙 기준으로 정확히 가운데로 이동 */
+}
+
+header.top-header .object {
+  left: 0%;
+  transform: translateX(175px);
+  display: flex;
+  gap: 40px;
+}
+
+.object a {
+  color: #000000;
+  align-items: center;
+  font-size: 14px;
+}
+
+.auth-buttons a {
+  color: #000;
+  text-decoration: none;
+  padding: 5px 10px;
+  border: 1px solid #000;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.auth-buttons a:hover {
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+}
+
+header.nav-header {
+  background-color: rgba(0, 0, 0, 0.05); /* 배경 투명 */
+  padding: 5px 20px;
+  display: flex;
+  justify-content: space-between; /* 좌우로 나뉘어 배치 */
+  align-items: center;
+}
+
+header.nav-header .logo img {
+  left: 0%;
+  transform: translateX(170px);
+  height: 65px; /* 로고 크기 조정 */
+  transition: all 0.3s ease;
+}
+
+header.nav-header .pages {
+  position: absolute; /* 정 가운데 배치 위해 absolute 사용 */
+  right: 0%;
+  transform: translate(-207px, 7px); /* 중앙 기준으로 정확히 가운데로 이동 */
+  display: flex;
+  gap: 40px;
+  top: 60px;
+  transition: color 0.3s ease;
+}
+
+header.nav-header .pages a {
+  text-decoration: none;
+  color: #000000;
+  font-weight: bold;
+  gap: 30px;
+  font-size: 15px;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+header.nav-header .pages a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color: #000000;
+  transition: width 0.4s ease, transform 0.4s ease; /* 부드러운 전환 효과 */
+  transform: translateX(-50%); /* 중앙에서 시작 */
+}
+
+header.nav-header .pages a:hover::after {
+  width: 100%; /* 글자에 맞게 양쪽으로 확장 */
+  transform: translateX(-50%); /* 가운데에서부터 퍼짐 */
+}
+
+main {
+  padding: 20px;
+}
+
+/* 사용자명 표시 스타일 */
+header.top-header .user-id {
+  right: 0%;
+  transform: translateX(-186px);
+  display: flex;
+  align-items: center;
+  gap: 10px; /* 사용자명과 로그아웃 버튼 사이 간격 */
+  color: #000;
+  font-size: 14px;
+}
+
+header.top-header .user-id #username-display {
+  font-weight: bold;
+  color: #0e0e0e; /* 약간 밝은 회색 */
+}
+
+/* 로그아웃 버튼 스타일 */
+header.top-header .user-id #logout-button {
+  padding: 5px 10px;
+  font-size: 12px;
+  color: #000;
+  background-color: rgba(255, 255, 255, 0.2); /* 반투명 흰색 배경 */
+  border: 1px solid #000;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+header.top-header .user-id #logout-button:hover {
+  background-color: #000;
+  color: #fff; /* 다크 텍스트 색상 */
+}
+
+/* 제목 스타일 */
+h1#postTitle {
+  color: #333;
+  font-size: 28px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.dolagagi {
+  color: #000;
+  text-decoration: none;
+  padding: 5px 10px;
+  border: 1px solid #000;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+/* 게시글 내용 스타일 */
+p#postContent {
+  color: #555;
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 800px;
+  text-align: justify;
+  margin-bottom: 20px;
+}
+
+/* 이미지 컨테이너 */
+div#postImage {
+  margin: 20px 0;
+  text-align: center;
+}
+
+div#postImage img {
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  height: auto;
+}
+
+/* 다운로드 버튼 스타일 */
+button#downloadButton {
+  background-color: #18ca1e;
+  color: white;
+  padding: 5px 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 20px;
+}
+
+button#downloadButton:hover {
+  background-color: #26d02f;
+}
+
+/* 돌아가기 링크 */
+.dolagagi a {
+  padding: 10px;
+  font-size: 14px;
+  color: #000000;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.dolagagi a:hover {
+  color: #000000;
+}
+
+.container1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 비율 유지하면서 화면에 맞게 */
+  background-color: #ffffff00; /* 배경 색상 설정 */
+}
+/* 1100px 이하일 때 적용되는 스타일 */
+@media (max-width: 1100px) {
+  /* 헤더 레이아웃 조정 */
+  header.top-header,
+  header.nav-header {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+
+  /* 로그인 및 네비게이션 중앙 정렬 */
+  header.top-header .auth-buttons,
+  header.top-header .object,
+  header.nav-header .pages {
+    transform: translateX(0); /* 위치 초기화 */
+    justify-content: center;
+    text-align: center;
+  }
+
+  /* 사용자명 및 로그아웃 버튼 세로 정렬 */
+  header.top-header .user-id {
+    align-items: center;
+    transform: translateX(0);
+  }
+
+  /* 로고 크기 축소 */
+  header.nav-header .logo img {
+    transform: translateX(0);
+    height: 50px;
+  }
+
+  /* 네비게이션 링크 크기 조정 */
+  header.nav-header .pages {
+    position: static;
+    gap: 20px;
+  }
+
+  header.nav-header .pages a {
+    font-size: 14px;
+    padding-bottom: 10px;
+  }
+
+  /* 본문 제목 크기 조정 */
+  h1#postTitle {
+    font-size: 22px;
+    margin-bottom: 15px;
+  }
+
+  /* 본문 내용 스타일 조정 */
+  p#postContent {
+    font-size: 14px;
+    max-width: 90%;
+    margin: 0 auto 15px auto;
+    text-align: justify;
+  }
+
+  /* 이미지 크기 조정 */
+  div#postImage img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* 다운로드 버튼 폭 조정 */
+  button#downloadButton {
+    font-size: 14px;
+    padding: 8px;
+    width: 90%;
+  }
+
+  /* 돌아가기 링크 중앙 정렬 */
+  a {
+    text-align: center;
+  }
+
+  /* 컨테이너 크기 조정 */
+  .container1 {
+    transform: translateX(5%);
+    width: 90%;
+    padding: 15px;
+    height: auto;
+  }
+  .teacherroom {
+    display: none;
+  }
+}

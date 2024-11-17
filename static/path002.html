@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>학생회 홈페이지</title>
+    <link rel="stylesheet" href="css/path002.css" />
+    <link href="css/flie/toplogo.png" rel="shortcut icon" type="image/x-icon" />
+  </head>
+  <body>
+    <header class="top-header">
+      <div class="object">
+        <a>10633 최형원 | 진로 탐구</a>
+      </div>
+      <div id="auth-buttons" class="auth-buttons">
+        <a href="login.html">로그인</a>
+        <a href="register.html">회원가입</a>
+      </div>
+
+      <div id="user-info" class="user-id" style="display: none">
+        <span>사용자님: <span id="username-display"></span></span>
+        <button id="logout-button" onclick="logout()">로그아웃</button>
+        <!-- 로그아웃 버튼 추가 -->
+      </div>
+    </header>
+
+    <header class="nav-header">
+      <div class="logo">
+        <a href="path001.html">
+          <img src="css/flie/wbhs_logo.png" alt="학교 로고" />
+        </a>
+      </div>
+      <div class="pages">
+        <a href="path002.html" class="teacherroom">선생님 교무실</a>
+        <a href="path003.html">학생 자치 관련 자료</a>
+        <a href="path004.html">커뮤니티</a>
+        <a href="path005.html">학생회 건의함</a>
+      </div>
+    </header>
+
+    <main>
+      <h2 class="input-title">선생님 교무실</h2>
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="검색하세요"
+        onkeyup="filterBoxes()"
+      />
+
+      <div class="floors">
+        <!-- 1층 교무실 그룹 -->
+        <div class="floor-container">
+          <div class="popup" id="fixedPopup">안녕</div>
+          <h2>1층</h2>
+          <div class="container">
+            <div class="box" id="box1">
+              <p class="title">1층 교무실</p>
+              <div class="popup">
+                <p class="teacher">차장연 선생님(음악)</p>
+                <p class="teacher">김성은 선생님(음악)</p>
+                <p class="teacher">이해미 선생님(영어)</p>
+                <p class="teacher">임효진 선생님(수학)</p>
+                <p class="teacher">김유리 선생님(역사)</p>
+                <p class="teacher">김경섭 선생님(물리 과학)</p>
+                <p class="teacher">진영롱 선생님(가정)</p>
+                <p class="teacher">황지연 선생님(수학)[1학년 7반]</p>
+                <p class="teacher">박지현 선생님(국어)</p>
+                <p class="teacher">정다운 선생님(지구 과학)</p>
+                <p class="teacher">차장연 선생님(음악)</p>
+                <p class="teacher">김주현 선생님(일본어)</p>
+              </div>
+            </div>
+          </div>
+          <h2>4층</h2>
+          <div class="container">
+            <div class="box" id="box2">
+              <p class="title">
+                4층 전동 <br />
+                교무실
+              </p>
+              <div class="popup">
+                <p class="teacher">조태원 선생님(사회) [3학년 7반 담임]</p>
+                <p class="teacher">오에숙 선생님(국어) [3학년 5반 담임]</p>
+                <p class="teacher">이종길 선생님(윤리) [3학년 6반 담임]</p>
+                <p class="teacher">최윤정 선생님(생명 과학) [3학년 4반 담임]</p>
+                <p class="teacher">임희철 선생님(영어) [3학년 3반 담임]</p>
+                <p class="teacher">강다희 선생님(수학) [3학년 1반 담임]</p>
+                <p class="teacher">이아룸 선생님(가정) [3학년 2반 담임]</p>
+              </div>
+            </div>
+            <div class="box" id="box3">
+              <p class="title">
+                4층 후동 <br />
+                교무실
+              </p>
+              <div class="popup">
+                <p class="teacher">정미진 선생님(역사) [3학년 8반 담임]</p>
+                <p class="teacher">이가영 선생님(국어) [3학년 10반 담임]</p>
+                <p class="teacher">전다혜 선생님(영어) [3학년 9반 담임]</p>
+                <p class="teacher">
+                  신미애 선생님(화학 과학) [3학년 11반 담임]
+                </p>
+                <p class="teacher">백지선 선생님(미술) [3학년 12반 담임]</p>
+                <p class="teacher">윤민호 선생님(체육) [3학년 부장]</p>
+                <p class="teacher">
+                  김종현 선생님(물리 과학) [3학년 13반 담임]
+                </p>
+                <p class="teacher">박성수 선생님(수학)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2층 교무실 그룹 -->
+        <div class="floor-container">
+          <h2>2층</h2>
+          <div class="container">
+            <div class="box" id="box4">
+              <p class="title">2층 전동<br />교무실</p>
+              <div class="popup">
+                <p class="teacher">김지영 선생님(일본어) [2학년 7반 담임]</p>
+                <p class="teacher">권민정 선생님(사회) [2학년 6반 담임]</p>
+                <p class="teacher">김선환 선생님(생명 과학) [2학년 8반 담임]</p>
+                <p class="teacher">구본화 선생님(영어) [2학년 5반 담임]</p>
+                <p class="teacher">김충수 선생님(한문) [2학년 4반 담임]</p>
+                <p class="teacher">이주영 선생님(윤리) [2학년 2반 담임]</p>
+                <p class="teacher">유기영 선생님(국어) [2학년 3반 담임]</p>
+                <p class="teacher">민유진 선생님(사회) [2학년 1반 담임]</p>
+              </div>
+            </div>
+            <div class="box" id="box5">
+              <p class="title">2층 후동<br />교무실</p>
+              <div class="popup">
+                <p class="teacher">조은별 선생님(지리) [2학년 9반 담임]</p>
+                <p class="teacher">박하은 선생님(국어) [2학년 10반 담임]</p>
+                <p class="teacher">김선정 선생님(수학) [2학년 11반 담임]</p>
+                <p class="teacher">이은미 선생님(심리학)</p>
+                <p class="teacher">문해경 선생님(한문) [2학년 13반 담임]</p>
+                <p class="teacher">김찬구 선생님(역사) [2학년 부장]</p>
+                <p class="teacher">
+                  이영선 선생님(화학 과학) [2학년 12반 담임]
+                </p>
+                <p class="teacher">김한호 선생님(윤리)</p>
+              </div>
+            </div>
+            <div class="box" id="box6">
+              <p class="title">2층 복도<br />교무실</p>
+              <div class="popup"">
+              <p class="teacher">김민겸 선생님(지리)</p>
+              <p class="teacher">김용길 선생님(국어)</p>
+              <p class="teacher">신광호 선생님(영어)</p>
+              <p class="teacher">김예원 선생님(국어)</p>
+              <p class="teacher">유은영 선생님(국어)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3층 교무실 그룹 -->
+      <div class="floor-container">
+        <h2>3층</h2>
+        <div class="container">
+          <div class="box" id="box7">
+            <p class="title">3층 전동<br />교무실</p>
+            <div class="popup">
+              <p class="teacher">박진미 선생님(수학) [1학년 ?반 담임]</p>
+              <p class="teacher">손보경 선생님(역사) [1학년 5반 담임]</p>
+              <p class="teacher">박선민 선생님(생명 과학) [1학년 8반 담임]</p>
+              <p class="teacher">이유진 선생님(국어) [1학년 6반 담임]</p>
+              <p class="teacher">이영찬 선생님(미술) [1학년 3반 담임]</p>
+              <p class="teacher">김미정 선생님(국어) [1학년 1반 담임]</p>
+              <p class="teacher">오영미 선생님(사회) [1학년 4반 담임]</p>
+              <p class="teacher">임성미 선생님(영어) [1학년 2반 담임]</p>
+            </div>
+          </div>
+          <div class="box" id="box8">
+            <p class="title">3층 후동<br />교무실</p>
+            <div class="popup">
+              <p class="teacher">김정수 선생님(수학) [1학년 10반 담임]</p>
+              <p class="teacher">박수현 선생님(국어) [1학년 11반 담임]</p>
+              <p class="teacher">김혜정 선생님(국어) [1학년 9반 담임]</p>
+              <p class="teacher">박진주 선생님(지리) [1학년 12반 담임]</p>
+              <p class="teacher">장주희 선생님(영어) [1학년 부장]</p>
+              <p class="teacher">임수진 선생님(지구 과학)</p>
+            </div>
+          </div>
+          <div class="box" id="box9">
+            <p class="title">3층 복도<br />교무실</p>
+            <div class="popup">
+              <p class="teacher">표정원 선생님(진로)</p>
+              <p class="teacher">안치선 선생님(수학)</p>
+              <p class="teacher">정선숙 선생님(정보)</p>
+              <p class="teacher">양송희 선생님(정보)</p>
+              <p class="teacher">이선화 선생님(진로)</p>
+              <p class="teacher">전병준 선생님(정보)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script src="script.js"></script>
+      <script>
+        function filterBoxes() {
+          const input = document
+            .getElementById("searchInput")
+            .value.toLowerCase();
+          const boxes = document.querySelectorAll(".box");
+
+          // 검색어가 있을 때만 body에 `has-input` 클래스를 추가
+          if (input !== "") {
+            document.body.classList.add("has-input");
+          } else {
+            document.body.classList.remove("has-input");
+          }
+
+          boxes.forEach((box) => {
+            const popupTexts = box.querySelectorAll(".popup p");
+            let boxHasMatch = false;
+
+            popupTexts.forEach((popupText) => {
+              const textContent = popupText.innerText.toLowerCase();
+
+              if (textContent.includes(input) && input !== "") {
+                popupText.classList.remove("teacher"); // 일치하는 텍스트는 흐리지 않음
+                boxHasMatch = true;
+              } else if (input !== "") {
+                popupText.classList.add("teacher"); // 일치하지 않는 텍스트는 흐리게
+              } else {
+                popupText.classList.remove("teacher"); // 검색어가 없으면 원상복구
+              }
+            });
+
+            if (!boxHasMatch && input !== "") {
+              box.classList.add("dimmed"); // 일치하는 텍스트가 없으면 박스를 흐리게
+            } else {
+              box.classList.remove("dimmed"); // 일치하는 텍스트가 있으면 박스를 뚜렷하게
+            }
+
+            if (input === "") {
+              popupTexts.forEach((popupText) => {
+                popupText.classList.remove("teacher"); // 검색어가 없으면 원상복구
+              });
+              box.classList.remove("dimmed");
+            }
+          });
+        }
+        // JavaScript 코드 추가
+        document.querySelectorAll(".box").forEach((box) => {
+          box.addEventListener("mouseenter", function () {
+            const popupContent = box.querySelector(".popup").innerHTML;
+            const fixedPopup = document.getElementById("fixedPopup");
+
+            // 팝업 내용 설정 및 표시
+            fixedPopup.innerHTML = popupContent;
+            fixedPopup.style.display = "block";
+          });
+
+          box.addEventListener("mouseleave", function () {
+            const fixedPopup = document.getElementById("fixedPopup");
+
+            // 팝업 숨기기
+            fixedPopup.style.display = "none";
+          });
+        });
+        // 현재 활성화된 팝업을 저장하는 변수를 선언합니다.
+        let activeBox = null;
+
+        document.querySelectorAll(".box").forEach((box) => {
+          box.addEventListener("mouseenter", function () {
+            const popupContent = box.querySelector(".popup").innerHTML;
+            const fixedPopup = document.getElementById("fixedPopup");
+
+            // 기존 활성화된 팝업이 있으면 숨깁니다.
+            if (activeBox && activeBox !== box) {
+              activeBox = null;
+              fixedPopup.style.display = "none";
+            }
+
+            // 새로운 팝업의 내용 설정 후 표시
+            fixedPopup.innerHTML = popupContent;
+            fixedPopup.style.display = "block";
+            activeBox = box; // 현재 활성화된 박스를 저장
+          });
+
+          box.addEventListener("mouseleave", function () {
+            const fixedPopup = document.getElementById("fixedPopup");
+
+            // 팝업을 숨기고 activeBox 초기화
+            fixedPopup.style.display = "none";
+            activeBox = null;
+          });
+        });
+
+        // 각 박스에 호버 이벤트 추가
+        document.querySelectorAll(".box").forEach((box) => {
+          box.addEventListener("mouseenter", function () {
+            const popupImage = document.createElement("div");
+            popupImage.classList.add("popup-image");
+            box.appendChild(popupImage);
+          });
+
+          box.addEventListener("mouseleave", function () {
+            const popupImage = box.querySelector(".popup-image");
+            if (popupImage) {
+              popupImage.remove(); // 박스를 떠나면 이미지 제거
+            }
+          });
+        });
+
+        // 이미지 요소 생성
+        const popupImage = document.createElement("img");
+        popupImage.style.position = "fixed";
+        popupImage.style.top = "200px";
+        popupImage.style.left = "800px";
+        popupImage.style.width = "440px";
+        popupImage.style.height = "160px";
+        popupImage.style.borderRadius = "8px";
+        popupImage.style.boxShadow = "0 1px 2px rgba(0, 0, 0, 0.2)";
+        popupImage.style.opacity = "0"; // 기본적으로 숨김
+        popupImage.style.transition = "opacity 0.1s ease";
+        popupImage.style.zIndex = "10";
+        document.body.appendChild(popupImage); // body에 추가
+
+        // id별로 이미지 경로와 좌표 설정
+        const boxSettings = {
+          box1: { src: "css/flie/background.jpg" },
+          box2: { src: "css/flie/background.jpg" },
+          box3: { src: "css/flie/background.jpg" },
+          box4: { src: "css/flie/background.jpg" },
+          box5: { src: "css/flie/background.jpg" },
+          box6: { src: "css/flie/background.jpg" },
+          box7: { src: "css/flie/background.jpg" },
+          box8: { src: "css/flie/background.jpg" },
+          box9: { src: "css/flie/background.jpg" },
+          // 추가적으로 box ID와 설정 추가 가능
+        };
+
+        // 모든 .box 요소에 마우스 이벤트 추가
+        document.querySelectorAll(".box").forEach((box) => {
+          box.addEventListener("mouseenter", () => {
+            const settings = boxSettings[box.id];
+            if (settings) {
+              popupImage.src = settings.src; // 이미지 경로 설정
+              popupImage.style.top = settings.top; // y 좌표 설정
+              popupImage.style.left = settings.left; // x 좌표 설정
+              popupImage.style.opacity = "1"; // hover 시 이미지 표시
+            }
+          });
+          box.addEventListener("mouseleave", () => {
+            popupImage.style.opacity = "0"; // hover 종료 시 이미지 숨김
+          });
+        });
+      </script>
+      <div class="background-image-container">
+        <img
+          src="css/flie/background.jpg"
+          alt="배경 이미지"
+          class="background-image"
+        />
+      </div>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>

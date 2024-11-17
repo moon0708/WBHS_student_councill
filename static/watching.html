@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>학생회 홈페이지</title>
+    <link rel="stylesheet" href="css/watching.css" />
+    <link href="css/flie/toplogo.png" rel="shortcut icon" type="image/x-icon" />
+  </head>
+  <body>
+    <header class="top-header">
+      <div class="object">
+        <a>10633 최형원 | 진로 탐구</a>
+      </div>
+      <div id="auth-buttons" class="auth-buttons">
+        <a href="login.html">로그인</a>
+        <a href="register.html">회원가입</a>
+      </div>
+
+      <div id="user-info" class="user-id" style="display: none">
+        <span>사용자님: <span id="username-display"></span></span>
+        <button id="logout-button" onclick="logout()">로그아웃</button>
+        <!-- 로그아웃 버튼 추가 -->
+      </div>
+    </header>
+
+    <header class="nav-header">
+      <div class="logo">
+        <a href="path001.html">
+          <img src="css/flie/wbhs_logo.png" alt="학교 로고" />
+        </a>
+      </div>
+      <div class="pages">
+        <a href="path002.html" class="teacherroom">선생님 교무실</a>
+        <a href="path003.html">학생 자치 관련 자료</a>
+        <a href="path004.html">커뮤니티</a>
+        <a href="path005.html">학생회 건의함</a>
+      </div>
+    </header>
+    <div class="container1">
+      <h1 id="postTitle">제목</h1>
+      <button id="downloadButton" style="display: none">파일 다운로드</button>
+      <p id="postContent">내용</p>
+      <div id="postImage"></div>
+      <a href="path004.html" class="dolagagi">돌아가기</a>
+    </div>
+    <script>
+      async function fetchPostDetails() {
+        const params = new URLSearchParams(window.location.search);
+        const postId = params.get("id");
+        if (!postId) {
+          alert("잘못된 접근입니다.");
+          window.location.href = "/static/path004.html";
+          return;
+        }
+        const response = await fetch(`/api/posts/${postId}`);
+        if (response.status === 404) {
+          alert("게시글을 찾을 수 없습니다.");
+          window.location.href = "/static/path004.html";
+          return;
+        }
+        const post = await response.json();
+        document.getElementById("postTitle").textContent = post.title;
+        document.getElementById("postContent").textContent = post.content;
+
+        // 이미지가 있는 경우 표시 및 다운로드 버튼 활성화
+        if (post.image_url) {
+          const imageElement = `<img src="${post.image_url}" alt="게시글 이미지" style="max-width: 100%;">`;
+          document.getElementById("postImage").innerHTML = imageElement;
+
+          // 다운로드 버튼 활성화
+          const downloadButton = document.getElementById("downloadButton");
+          downloadButton.style.display = "inline-block";
+          downloadButton.addEventListener("click", () => {
+            const link = document.createElement("a");
+            link.href = post.image_url;
+            link.download = post.image_url.split("/").pop(); // 파일 이름 추출
+            link.click();
+          });
+        }
+      }
+      fetchPostDetails();
+    </script>
+    <div class="background-image-container">
+      <img
+        src="css/flie/white.jpg"
+        alt="배경 이미지"
+        class="background-image"
+      />
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

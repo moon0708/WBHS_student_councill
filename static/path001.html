@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>학생회 홈페이지</title>
+    <link rel="stylesheet" href="css/path001.css" />
+    <link href="css/flie/toplogo.png" rel="shortcut icon" type="image/x-icon" />
+  </head>
+  <body>
+    <header class="top-header">
+      <div class="object">
+        <a>10633 최형원 | 진로 탐구</a>
+      </div>
+      <div id="auth-buttons" class="auth-buttons">
+        <a href="login.html">로그인</a>
+        <a href="register.html">회원가입</a>
+      </div>
+
+      <div id="user-info" class="user-id" style="display: none">
+        <span>사용자님: <span id="username-display"></span></span>
+        <button id="logout-button" onclick="logout()">로그아웃</button>
+        <!-- 로그아웃 버튼 추가 -->
+      </div>
+    </header>
+
+    <header class="nav-header">
+      <div class="logo">
+        <a href="path001.html">
+          <img src="css/flie/wbhs_logo_W.png" alt="학교 로고" />
+        </a>
+      </div>
+      <div class="pages">
+        <a href="path002.html" class="teacherroom">선생님 교무실</a>
+        <a href="path003.html">학생 자치 관련 자료</a>
+        <a href="path004.html">커뮤니티</a>
+        <a href="path005.html">학생회 건의함</a>
+      </div>
+    </header>
+    <div class="bg-video">
+      <video class="bg-video__content" autoplay muted loop>
+        <source src="css/flie/background.mp4" type="video/mp4" />
+      </video>
+      <div class="slogan">
+        <h1>WB High School Student Council</h1>
+        <h2>더 나은 학교와 더 밝은 미래를 위해</h2>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

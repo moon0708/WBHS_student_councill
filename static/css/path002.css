@@ -1,0 +1,414 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.background-image-container {
+  position: fixed; /* 페이지 스크롤과 상관없이 고정 */
+  top: 0;
+  left: 0;
+  opacity: 80%;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* 뒤로 보내기 */
+  overflow: hidden; /* 이미지가 넘치면 숨기기 */
+}
+
+.background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 비율 유지하면서 화면에 맞게 */
+}
+
+header.top-header {
+  background-color: rgba(0, 0, 0, 0.1); /* 배경을 흰색으로 */
+  padding: 5px 20px; /* 세로 폭을 좁게 설정 */
+  display: flex;
+  justify-content: space-between;
+}
+
+header.top-header .auth-buttons {
+  right: 0%;
+  transform: translateX(-187px); /* 중앙 기준으로 정확히 가운데로 이동 */
+}
+
+header.top-header .object {
+  left: 0%;
+  transform: translateX(175px);
+  display: flex;
+  gap: 40px;
+}
+
+.object a {
+  color: #000000;
+  align-items: center;
+  font-size: 14px;
+}
+
+.auth-buttons a {
+  color: #000;
+  text-decoration: none;
+  padding: 5px 10px;
+  border: 1px solid #000;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.auth-buttons a:hover {
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+}
+
+header.nav-header {
+  background-color: rgba(0, 0, 0, 0.05); /* 배경 투명 */
+  padding: 5px 20px;
+  display: flex;
+  justify-content: space-between; /* 좌우로 나뉘어 배치 */
+  align-items: center;
+}
+
+header.nav-header .logo img {
+  left: 0%;
+  transform: translateX(170px);
+  height: 65px; /* 로고 크기 조정 */
+  transition: all 0.3s ease;
+}
+
+header.nav-header .pages {
+  position: absolute; /* 정 가운데 배치 위해 absolute 사용 */
+  right: 0%;
+  transform: translate(-207px, 8px); /* 중앙 기준으로 정확히 가운데로 이동 */
+  display: flex;
+  gap: 40px;
+  top: 60px;
+  transition: color 0.3s ease;
+}
+
+header.nav-header .pages a {
+  text-decoration: none;
+  color: #000000;
+  font-weight: bold;
+  gap: 30px;
+  font-size: 15px;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+header.nav-header .pages a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color: #000000;
+  transition: width 0.4s ease, transform 0.4s ease; /* 부드러운 전환 효과 */
+  transform: translateX(-50%); /* 중앙에서 시작 */
+}
+
+header.nav-header .pages a:hover::after {
+  width: 100%; /* 글자에 맞게 양쪽으로 확장 */
+  transform: translateX(-50%); /* 가운데에서부터 퍼짐 */
+}
+
+.log {
+  background-color: #fff;
+  padding: 20px;
+  width: 30%;
+  margin: 0 auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"] {
+  width: 300px;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+main {
+  margin-top: calc(45px);
+  font-family: Arial, sans-serif;
+  margin-left: calc(17.5%);
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.322);
+  border-radius: 10px;
+  width: 1000px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.input-title {
+  text-align: left;
+  position: relative;
+  font-size: 32px;
+  padding: 8px;
+  color: #000000; /* 청록색 네온 텍스트 */
+  font-family: "Arial", sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.floors {
+  display: flex;
+  gap: 10px;
+  justify-content: left;
+}
+
+.floor-container {
+  width: 15%; /* 각 층의 너비를 동일하게 */
+  text-align: left;
+}
+
+.floor-container h2 {
+  font-size: 20px;
+  font-weight: bold;
+  transform: translateX(65px);
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.box {
+  margin-bottom: 10px;
+  margin-left: calc(30px);
+  width: 100px; /* 크기 조금 확대 */
+  height: 90px;
+  background-color: #18ca1ec9;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: transform 0.3s, opacity 0.3s, box-shadow 0.3s;
+  z-index: 1;
+  cursor: pointer;
+}
+
+image {
+  opacity: 0;
+}
+
+.box-container {
+  position: relative;
+  display: flex; /* 줄바꿈 없이 컨테이너가 나란히 배치 */
+}
+
+.box-container:hover .popup-image {
+  opacity: 1; /* hover 시 이미지 표시 */
+}
+
+.box:hover {
+  transform: scale(1.15); /* 확대 비율 조정 */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* 그림자 추가 */
+}
+
+.title {
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  font-size: 16px; /* 글자 크기 확대 */
+}
+
+.popup {
+  display: flex; /* 기본적으로 숨김 */
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: fixed;
+  display: none;
+  top: 380px;
+  left: 800px;
+  width: 440px;
+  height: 300px;
+  background-color: rgba(255, 255, 255, 0.807);
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  box-shadow: 0 1.5px 2.5px rgba(0, 0, 0, 0.15);
+}
+
+.dimmed {
+  opacity: 0.3;
+}
+
+.popup p {
+  transform: translateY(1px);
+  padding: 2px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 14px;
+  color: #333;
+  transition: color 0.3s;
+}
+
+.dimmed-text {
+  color: rgba(0, 0, 0, 0.3);
+  font-size: 13.5px;
+}
+
+.box:hover .popup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.teacher {
+  color: #333; /* 초기 상태는 흐려지지 않음 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.has-input .teacher {
+  color: rgba(0, 0, 0, 0.3); /* 검색어가 있을 때만 흐림 효과 적용 */
+  font-size: 13.5px;
+}
+
+/* 사용자명 표시 스타일 */
+header.top-header .user-id {
+  right: 0%;
+  transform: translateX(-186px);
+  display: flex;
+  align-items: center;
+  gap: 10px; /* 사용자명과 로그아웃 버튼 사이 간격 */
+  color: #000;
+  font-size: 14px;
+}
+
+header.top-header .user-id #username-display {
+  font-weight: bold;
+  color: #0e0e0e; /* 약간 밝은 회색 */
+}
+
+/* 로그아웃 버튼 스타일 */
+header.top-header .user-id #logout-button {
+  padding: 5px 10px;
+  font-size: 12px;
+  color: #000;
+  background-color: rgba(255, 255, 255, 0.2); /* 반투명 흰색 배경 */
+  border: 1px solid #000;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+header.top-header .user-id #logout-button:hover {
+  background-color: #000;
+  color: #fff; /* 다크 텍스트 색상 */
+}
+
+/* 1100px 이하일 때 적용되는 스타일 */
+@media (max-width: 1100px) {
+  /* 헤더 요소 조정 */
+  header.top-header,
+  header.nav-header {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+
+  /* 로그인 버튼과 네비게이션 중앙 정렬 */
+  header.top-header .auth-buttons,
+  header.top-header .object,
+  header.nav-header .pages {
+    transform: translateX(0); /* 가로 위치 초기화 */
+    justify-content: center;
+  }
+
+  /* 사용자명과 로그아웃 버튼을 세로 정렬로 조정 */
+  header.top-header .user-id {
+    gap: 5px;
+    transform: translateX(0); /* 위치 초기화 */
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  /* 배경 이미지 컨테이너의 위치와 크기 조정 */
+  .background-image-container {
+    width: 100vw;
+    height: 100vh;
+  }
+
+  /* 로고 크기 축소 및 가운데 정렬 */
+  header.nav-header .logo img {
+    transform: translateX(0);
+    height: 50px;
+  }
+
+  /* 페이지 네비게이션 위치 조정 */
+  header.nav-header .pages {
+    position: static; /* 절대 위치 해제 */
+    margin-top: 10px;
+  }
+
+  /* 네비게이션 링크 스타일 조정 */
+  header.nav-header .pages a {
+    font-size: 14px;
+    padding-bottom: 10px;
+  }
+
+  /* 메인 컨텐츠의 폭과 정렬 조정 */
+  main {
+    margin-left: 0;
+    width: 90%;
+    padding: 15px;
+    box-shadow: none;
+  }
+
+  /* 로그 박스의 크기 조정 */
+  .log {
+    width: 90%;
+    padding: 15px;
+  }
+
+  /* 플로어 컨테이너의 너비 및 간격 조정 */
+  .floor-container {
+    width: 100%; /* 너비를 100%로 설정하여 줄맞춤 */
+  }
+
+  /* 박스 크기 축소 */
+  .box {
+    width: 80px;
+    height: 70px;
+    margin-left: 0;
+  }
+
+  /* 슬로건의 위치 및 크기 조정 */
+  .slogan {
+    font-size: 1.5rem; /* 슬로건 크기 축소 */
+    left: 50%;
+    top: 30%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  /* 팝업 크기 조정 */
+  .popup {
+    width: 80%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .teacherroom {
+    display: none;
+  }
+}

@@ -1,0 +1,331 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.background-image-container {
+  position: fixed; /* 페이지 스크롤과 상관없이 고정 */
+  top: 0;
+  left: 0;
+  opacity: 80%;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* 뒤로 보내기 */
+  overflow: hidden; /* 이미지가 넘치면 숨기기 */
+}
+
+.background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 비율 유지하면서 화면에 맞게 */
+}
+
+header.top-header {
+  background-color: rgba(0, 0, 0, 0.1); /* 배경을 흰색으로 */
+  padding: 5px 20px; /* 세로 폭을 좁게 설정 */
+  display: flex;
+  justify-content: space-between;
+}
+
+header.top-header .auth-buttons {
+  right: 0%;
+  transform: translateX(-187px); /* 중앙 기준으로 정확히 가운데로 이동 */
+}
+
+header.top-header .object {
+  left: 0%;
+  transform: translateX(175px);
+  display: flex;
+  gap: 40px;
+}
+
+.object a {
+  color: #000000;
+  align-items: center;
+  font-size: 14px;
+}
+
+.auth-buttons a {
+  color: #000;
+  text-decoration: none;
+  padding: 5px 10px;
+  border: 1px solid #000;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.auth-buttons a:hover {
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+}
+
+header.nav-header {
+  background-color: rgba(0, 0, 0, 0.05); /* 배경 투명 */
+  padding: 5px 20px;
+  display: flex;
+  justify-content: space-between; /* 좌우로 나뉘어 배치 */
+  align-items: center;
+}
+
+header.nav-header .logo img {
+  left: 0%;
+  transform: translateX(170px);
+  height: 65px; /* 로고 크기 조정 */
+  transition: all 0.3s ease;
+}
+
+header.nav-header .pages {
+  position: absolute; /* 정 가운데 배치 위해 absolute 사용 */
+  right: 0%;
+  transform: translate(-207px, 7px); /* 중앙 기준으로 정확히 가운데로 이동 */
+  display: flex;
+  gap: 40px;
+  top: 60px;
+  transition: color 0.3s ease;
+}
+
+header.nav-header .pages a {
+  text-decoration: none;
+  color: #000000;
+  font-weight: bold;
+  gap: 30px;
+  font-size: 15px;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+header.nav-header .pages a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color: #000000;
+  transition: width 0.4s ease, transform 0.4s ease; /* 부드러운 전환 효과 */
+  transform: translateX(-50%); /* 중앙에서 시작 */
+}
+
+header.nav-header .pages a:hover::after {
+  width: 100%; /* 글자에 맞게 양쪽으로 확장 */
+  transform: translateX(-50%); /* 가운데에서부터 퍼짐 */
+}
+
+main {
+  padding: 20px;
+}
+
+.log {
+  background-color: #fff;
+  padding: 20px;
+  width: 30%;
+  margin: 0 auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 사용자명 표시 스타일 */
+header.top-header .user-id {
+  right: 0%;
+  transform: translateX(-186px);
+  display: flex;
+  align-items: center;
+  gap: 10px; /* 사용자명과 로그아웃 버튼 사이 간격 */
+  color: #000;
+  font-size: 14px;
+}
+
+header.top-header .user-id #username-display {
+  font-weight: bold;
+  color: #0e0e0e; /* 약간 밝은 회색 */
+}
+
+/* 로그아웃 버튼 스타일 */
+header.top-header .user-id #logout-button {
+  padding: 5px 10px;
+  font-size: 12px;
+  color: #000;
+  background-color: rgba(255, 255, 255, 0.2); /* 반투명 흰색 배경 */
+  border: 1px solid #000;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+header.top-header .user-id #logout-button:hover {
+  background-color: #000;
+  color: #fff; /* 다크 텍스트 색상 */
+}
+h1 {
+  color: #333;
+  font-size: 28px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* 테이블 스타일 */
+table {
+  width: 100%;
+  max-width: 800px;
+  border-collapse: collapse; /* 중복 테두리 제거 */
+  margin-bottom: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden; /* 테두리 둥근 효과 */
+}
+
+/* 테이블 헤더 */
+table thead tr {
+  background-color: #18ca1e; /* 헤더 배경색 */
+  color: #fff;
+  text-align: left;
+}
+
+table thead th {
+  padding: 10px;
+  font-size: 16px;
+}
+
+/* 테이블 본문 */
+table tbody tr:nth-child(odd) {
+  background-color: #f9f9f9; /* 줄무늬 효과 */
+}
+
+table tbody tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
+table tbody td {
+  padding: 10px;
+  font-size: 14px;
+  color: #333;
+}
+
+table tbody tr:hover {
+  background-color: #f1f1f1; /* 호버 효과 */
+}
+
+/* 링크 스타일 */
+table tbody td a {
+  color: #000000;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+table tbody td a:hover {
+  color: #000000;
+}
+
+.dolagagi {
+  transform: translateY(-5px);
+  color: #000;
+  text-decoration: none;
+  padding: 5px 10px;
+  border: 1px solid #000;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.container1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: #f9f9f900; /* 배경 색상 설정 */
+}
+/* 1100px 이하일 때 적용되는 스타일 */
+@media (max-width: 1100px) {
+  /* 헤더 레이아웃 조정 */
+  header.top-header,
+  header.nav-header {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+  /* 로그인 버튼, 네비게이션 중앙 정렬 */
+  header.top-header .auth-buttons,
+  header.top-header .object,
+  header.nav-header .pages {
+    transform: translateX(0); /* 가로 위치 초기화 */
+    justify-content: center;
+    text-align: center;
+  }
+
+  /* 사용자명 및 로그아웃 버튼 세로 정렬 */
+  header.top-header .user-id {
+    align-items: center;
+    transform: translateX(0);
+    margin-top: 10px;
+  }
+
+  /* 로고 크기 및 위치 조정 */
+  header.nav-header .logo img {
+    transform: translateX(0);
+    height: 50px; /* 로고 크기 축소 */
+  }
+
+  /* 네비게이션 메뉴 위치 및 크기 조정 */
+  header.nav-header .pages {
+    position: static;
+    gap: 20px; /* 간격 조정 */
+  }
+  header.nav-header .pages a {
+    font-size: 14px;
+    padding-bottom: 8px;
+  }
+
+  /* 메인 콘텐츠 크기 조정 */
+  main {
+    width: 90%;
+    margin: 0 auto;
+    padding: 15px;
+  }
+
+  /* 테이블 폭 및 위치 조정 */
+  table {
+    width: 100%; /* 작은 화면에서 폭을 100%로 설정 */
+    margin: 0 auto;
+  }
+
+  /* 테이블 셀 크기 조정 */
+  table thead th,
+  table tbody td {
+    font-size: 14px; /* 폰트 크기 축소 */
+    padding: 8px;
+  }
+
+  /* 테이블 호버 효과 유지 */
+  table tbody tr:hover {
+    background-color: #eaeaea;
+  }
+
+  /* 돌아가기 링크 중앙 정렬 */
+  a {
+    text-align: center;
+    display: block;
+  }
+
+  /* 컨테이너 조정 */
+  .container1 {
+    transform: translateX(5%);
+    width: 90%;
+    padding: 15px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* 제목 크기 축소 */
+  h1 {
+    font-size: 20px;
+  }
+  .teacherroom {
+    display: none;
+  }
+}

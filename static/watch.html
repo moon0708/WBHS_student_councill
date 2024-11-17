@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>게시판</title>
+    <link rel="stylesheet" href="/static/css/style.css" />
+  </head>
+  <body>
+    <h1>게시판 목록</h1>
+    <table border="1" cellpadding="10" cellspacing="0">
+      <thead>
+        <tr>
+          <th>번호</th>
+          <th>제목</th>
+          <th>날짜</th>
+        </tr>
+      </thead>
+      <tbody id="postTableBody"></tbody>
+    </table>
+    <a href="make.html">게시판 만들기</a>
+    <script>
+      async function fetchPosts() {
+        const response = await fetch("/api/posts");
+        const posts = await response.json();
+        const postTableBody = document.getElementById("postTableBody");
+        postTableBody.innerHTML = "";
+        posts.forEach((post) => {
+          const row = document.createElement("tr");
+          row.innerHTML = `
+                    <td>${post.id}</td>
+                    <td><a href="/static/watching.html?id=${post.id}">${
+            post.title
+          }</a></td>
+                    <td>${new Date(post.created_at).toLocaleDateString()}</td>
+                `;
+          postTableBody.appendChild(row);
+        });
+      }
+      fetchPosts();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>학생회 홈페이지</title>
+    <link rel="stylesheet" href="css/register.css" />
+    <link href="css/flie/toplogo.png" rel="shortcut icon" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header class="top-header">
+      <div class="object">
+        <a>10633 최형원 | 진로 탐구</a>
+      </div>
+      <div id="auth-buttons" class="auth-buttons">
+        <a href="login.html">로그인</a>
+        <a href="register.html">회원가입</a>
+      </div>
+
+      <div id="user-info" class="user-id" style="display: none">
+        <span>사용자님: <span id="username-display"></span></span>
+        <button id="logout-button" onclick="logout()">로그아웃</button>
+        <!-- 로그아웃 버튼 추가 -->
+      </div>
+    </header>
+
+    <header class="nav-header">
+      <div class="logo">
+        <a href="path001.html">
+          <img src="css/flie/wbhs_logo.png" alt="학교 로고" />
+        </a>
+      </div>
+      <div class="pages">
+        <a href="path002.html" class="teacherroom">선생님 교무실</a>
+        <a href="path003.html">학생 자치 관련 자료</a>
+        <a href="path004.html">커뮤니티</a>
+        <a href="path005.html">학생회 건의함</a>
+      </div>
+    </header>
+
+    <div class="background-image-container">
+      <img
+        src="css/flie/background.jpg"
+        alt="배경 이미지"
+        class="background-image"
+      />
+    </div>
+    <div class="signup-container">
+      <h2>회원가입</h2>
+      <form id="signup-form" onsubmit="return signup();">
+        <input
+          type="text"
+          id="username"
+          placeholder="아이디"
+          required
+          minlength="4"
+          autocomplete="off"
+          pattern="[^ㄱ-ㅎㅏ-ㅣ가-힣]*"
+          title="한글은 입력할 수 없습니다."
+        />
+        <div class="password-container">
+          <input
+            type="password"
+            id="password"
+            placeholder="비밀번호"
+            required
+            minlength="8"
+            autocomplete="off"
+            pattern="[^ㄱ-ㅎㅏ-ㅣ가-힣]*"
+          />
+          <i
+            class="fa fa-eye"
+            id="toggle-password"
+            onclick="togglePasswordVisibility()"
+          ></i>
+        </div>
+        <button type="submit">회원가입</button>
+      </form>
+      <p id="password-error" style="color: red"></p>
+      <p id="success-message" class="success-message"></p>
+      <p id="error-message" class="error-message"></p>
+    </div>
+    <script src="register.js"></script>
+    <script src="eye.js"></script>
+  </body>
+</html>
